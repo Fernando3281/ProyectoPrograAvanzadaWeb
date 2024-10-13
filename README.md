@@ -1,7 +1,7 @@
 # ProyectoPrograAvanzadaWeb
 Proyecto de Programación Avanzada en Web - KN
 
-Nuggets Instalados:
+**Nuggets Instalados:**
 
 - Microsoft.AspNet.WebApi.Client
 - Microsoft.EntityFrameworkCore
@@ -10,3 +10,7 @@ Nuggets Instalados:
 - Microsoft.EntityFrameworkCore.Tools
 - Microsoft.VisualStudio.Web.CodeGeneration.Design
 - Swashbuckle.AspNetCore
+
+  
+**Diagrama Entidad Relacion:**
+![Screenshot 2024-10-12 180314](https://github.com/user-attachments/assets/1baa6787-90c7-4941-af42-c45ebe499efa)
