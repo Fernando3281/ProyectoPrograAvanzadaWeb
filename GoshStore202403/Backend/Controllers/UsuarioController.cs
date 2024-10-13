@@ -1,6 +1,7 @@
 ﻿using Backend.Services.Interfaces;
 using Entities.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Backend.DTO;
 
 namespace Backend.Controllers
 {
@@ -17,78 +18,60 @@ namespace Backend.Controllers
 
         // GET: api/Usuario
         [HttpGet]
-        public ActionResult<IEnumerable<Usuario>> Get()
+        public IEnumerable<UsuarioDTO> Get()
         {
-            return Ok(_usuarioService.Obtener());
+            return _usuarioService.Obtener();
         }
 
         // GET api/Usuario/5
         [HttpGet("{id}")]
-        public ActionResult<Usuario> Get(int id)
+        public UsuarioDTO Get(int id)
         {
-            var usuario = _usuarioService.Obtener(id);
-            if (usuario == null)
-            {
-                return NotFound();
-            }
-            return Ok(usuario);
+           return _usuarioService.Obtener(id);
         }
 
         // POST api/Usuario
         [HttpPost]
-        public ActionResult<Usuario> Post([FromBody] Usuario usuario)
+        public ActionResult Post([FromBody] UsuarioDTO usuario)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (_usuarioService.Agregar(usuario))
-            {
-                return CreatedAtAction(nameof(Get), new { id = usuario.IdUsuario }, usuario);
-            }
-
-            return BadRequest("No se pudo agregar el usuario");
+            _usuarioService.Agregar(usuario);
+            return Ok(usuario);
         }
 
         // PUT api/Usuario/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Usuario usuario)
+        public IActionResult Put(int id, [FromBody] UsuarioDTO usuario)
         {
             if (id != usuario.IdUsuario)
             {
-                return BadRequest();
+                return BadRequest("El ID del usuario no coincide con el ID en la URL.");
             }
 
-            if (!ModelState.IsValid)
+            var usuarioExistente = _usuarioService.Obtener(id);
+            if (usuarioExistente == null)
             {
-                return BadRequest(ModelState);
+                return NotFound("El usuario no fue encontrado.");
             }
-
-            if (_usuarioService.Editar(usuario))
+            try
             {
-                return NoContent();
+                _usuarioService.Editar(usuario);
+                return Ok(usuario); 
             }
-
-            return BadRequest("No se pudo actualizar el usuario");
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al editar el usuario: {ex.Message}");
+            }
         }
 
         // DELETE api/Usuario/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public void Delete(int id)
         {
-            var usuario = _usuarioService.Obtener(id);
-            if (usuario == null)
+            UsuarioDTO usuario = new UsuarioDTO
             {
-                return NotFound();
-            }
-
-            if (_usuarioService.Eliminar(usuario))
-            {
-                return NoContent();
-            }
-
-            return BadRequest("No se pudo eliminar el usuario");
+                IdUsuario = id
+            };
+            _usuarioService.Eliminar(usuario);
         }
     }
 }
