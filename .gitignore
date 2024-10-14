@@ -396,3 +396,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+#Ignorar Cambios en el Context
+*.DbGoshStoreContext.cs
