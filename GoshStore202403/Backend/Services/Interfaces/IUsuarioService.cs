@@ -1,14 +1,15 @@
-﻿using Entities.Entities;
+﻿using Backend.DTO;
+using Entities.Entities;
 
 namespace Backend.Services.Interfaces
 {
     public interface IUsuarioService
     {
 
-        bool Agregar(Usuario entity);
-        bool Editar(Usuario entity);
-        bool Eliminar(Usuario entity);
-        Usuario Obtener(int id);
-        List<Usuario> Obtener();
+        bool Agregar(UsuarioDTO entity);
+        bool Editar(UsuarioDTO entity);
+        bool Eliminar(UsuarioDTO entity);
+        UsuarioDTO Obtener(int id);
+        List<UsuarioDTO> Obtener();
     }
 }

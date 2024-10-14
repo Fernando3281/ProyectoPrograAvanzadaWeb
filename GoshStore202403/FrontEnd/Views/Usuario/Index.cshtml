@@ -1,0 +1,47 @@
+﻿@model IEnumerable<FrontEnd.Models.UsuarioViewModel>
+
+@{
+    ViewData["Title"] = "Usuarios";
+}
+
+<h1>Lista de Usuarios</h1>
+
+<p>
+    <a asp-action="Create">Crear nuevo Usuario</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.IdUsuario }) |
+                @Html.ActionLink("Detalles", "Details", new { id=item.IdUsuario }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.IdUsuario })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
