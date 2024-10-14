@@ -1,0 +1,32 @@
+﻿@model FrontEnd.Models.UsuarioViewModel
+
+<h2>Eliminar Usuario</h2>
+
+<h3>¿Estás seguro de que deseas eliminar este usuario?</h3>
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Correo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Correo)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.IdUsuario) 
+        <p>
+            <input type="submit" value="Eliminar" />
+            @Html.ActionLink("Cancelar", "Index")
+        </p>
+    }
+</div>

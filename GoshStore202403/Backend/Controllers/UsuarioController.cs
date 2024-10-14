@@ -42,12 +42,8 @@ namespace Backend.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] UsuarioDTO usuario)
         {
-            if (id != usuario.IdUsuario)
-            {
-                return BadRequest("El ID del usuario no coincide con el ID en la URL.");
-            }
-
             var usuarioExistente = _usuarioService.Obtener(id);
+
             if (usuarioExistente == null)
             {
                 return NotFound("El usuario no fue encontrado.");
