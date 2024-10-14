@@ -14,3 +14,6 @@ Proyecto de Programación Avanzada en Web - KN
   
 **Diagrama Entidad Relacion:**
 ![Screenshot 2024-10-12 180314](https://github.com/user-attachments/assets/1baa6787-90c7-4941-af42-c45ebe499efa)
+
+
+GitBash: "git update-index --assume-unchanged DbGoshStoreContext.cs"
