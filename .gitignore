@@ -395,7 +395,7 @@ FodyWeavers.xsd
 *.msp
 
 # Ignorar el archivo DbGoshStoreContext.cs
-DbGoshStoreContext.cs
+Entities/DbGoshStoreContext.cs
 
 
 # JetBrains Rider
