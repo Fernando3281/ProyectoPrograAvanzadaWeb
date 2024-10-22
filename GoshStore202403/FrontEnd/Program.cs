@@ -11,6 +11,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient<IServiceRepository, ServiceRepository>();
 builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
 builder.Services.AddScoped<IUsuarioHelper, UsuarioHelper>();
+builder.Services.AddScoped<IProductoHelper, ProductoHelper>();
+builder.Services.AddScoped<ICategoriaHelper, CategoriaHelper>();
 
 #endregion
 
