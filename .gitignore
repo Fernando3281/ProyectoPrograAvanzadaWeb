@@ -403,3 +403,4 @@ Entities/DbGoshStoreContext.cs
 
 # Ignorar los cambios en el string de conexion
 DbGoshStoreContext.cs
+GoshStore202403/Entities/Entities/DbGoshStoreContext.cs

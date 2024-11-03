@@ -18,7 +18,8 @@ builder.Services.AddDbContext<DbGoshStoreContext>();
 builder.Services.AddScoped<IUnidadDeTrabajo, UnidadDeTrabajo>();
 builder.Services.AddScoped<IUsuarioDAL, UsuarioDALImpl>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
-
+builder.Services.AddScoped<IPedidoDAL, PedidoDALImpl>();
+builder.Services.AddScoped<IPedidoService, PedidoService>();
 
 #endregion
 

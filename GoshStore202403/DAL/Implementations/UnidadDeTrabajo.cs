@@ -11,16 +11,18 @@ namespace DAL.Implementations
     public class UnidadDeTrabajo : IUnidadDeTrabajo
     {
         public IUsuarioDAL UsuarioDAL { get; set; }
-       
+        public IPedidoDAL PedidoDAL { get; set; }
+
         private DbGoshStoreContext _dbGoshStoreContext;
 
         public UnidadDeTrabajo(DbGoshStoreContext dbGoshStoreContext,
-                        IUsuarioDAL usuarioDAL
-                       
+                        IUsuarioDAL usuarioDAL, IPedidoDAL pedidoDAL
+
             ) 
         {
                 this._dbGoshStoreContext = dbGoshStoreContext;
                 this.UsuarioDAL = usuarioDAL; 
+                this.PedidoDAL = pedidoDAL;
                 
         }
        
