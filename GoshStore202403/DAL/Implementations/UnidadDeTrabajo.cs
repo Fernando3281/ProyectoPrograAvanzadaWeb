@@ -11,19 +11,25 @@ namespace DAL.Implementations
     public class UnidadDeTrabajo : IUnidadDeTrabajo
     {
         public IUsuarioDAL UsuarioDAL { get; set; }
-        public IPedidoDAL PedidoDAL { get; set; }
 
+        public ICategoriaDAL CategoriaDAL { get; set; }
+
+        public IProductoDAL ProductoDAL { get; set; }
+        
+        public IPedidoDAL PedidoDAL { get; set; }
+       
         private DbGoshStoreContext _dbGoshStoreContext;
 
         public UnidadDeTrabajo(DbGoshStoreContext dbGoshStoreContext,
-                        IUsuarioDAL usuarioDAL, IPedidoDAL pedidoDAL
-
+                        IUsuarioDAL usuarioDAL, ICategoriaDAL categoriaDAL, IProductoDAL productoDAL, IPedidoDAL pedidoDAL
+                       
             ) 
         {
                 this._dbGoshStoreContext = dbGoshStoreContext;
-                this.UsuarioDAL = usuarioDAL; 
+                this.UsuarioDAL = usuarioDAL;
+                this.CategoriaDAL = categoriaDAL; 
+                this.ProductoDAL = productoDAL;
                 this.PedidoDAL = pedidoDAL;
-                
         }
        
 
@@ -42,7 +48,7 @@ namespace DAL.Implementations
         }
 
         public void Dispose()
-        {
+            {
             this._dbGoshStoreContext.Dispose();
         }
     }
