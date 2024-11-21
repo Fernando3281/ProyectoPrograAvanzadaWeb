@@ -1,0 +1,116 @@
+﻿@*@model FrontEnd.Models.ProductoViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ProductoViewModel</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IdProducto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IdProducto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NombreProducto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NombreProducto)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Stock)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CategoriaId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CategoriaId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.categoryName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.categoryName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Imagen)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Imagen)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Talla)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Talla)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
+*@
+
+@model FrontEnd.Models.ProductoViewModel
+
+@{
+    ViewData["Title"] = "Detalles del Producto";
+}
+
+<!-- Shop Detail Start -->
+<div class="container-fluid py-5">
+    <div class="row px-xl-5">
+        <div class="col-lg-5 pb-5">
+            <div class="product-detail-img">
+                <img class="img-fluid w-100" src="@Url.Content(Model.Imagen)" alt="@Model.NombreProducto">
+            </div>
+        </div>
+
+        <div class="col-lg-7 pb-5">
+            <h3 class="font-weight-semi-bold">@Model.NombreProducto</h3>
+            <h4 class="text-primary mb-3">₡@Model.Precio</h4>
+            <p class="mb-4">@Model.Descripcion</p>
+
+            <div class="d-flex mb-3">
+                <strong class="text-dark mr-3">Stock:</strong>
+                <span>@Model.Stock</span>
+            </div>
+
+            <!--<div class="d-flex mb-3">
+                <strong class="text-dark mr-3">Categoría:</strong>
+            </div>-->
+
+            <div class="d-flex mb-3">
+                <strong class="text-dark mr-3">Talla:</strong>
+                <span>@Model.Talla</span>
+            </div>
+
+            <div class="d-flex align-items-center mb-4 pt-2">
+                @Html.ActionLink("Editar", "Edit", new { id = Model.IdProducto }, new { @class = "btn btn-primary px-3 mr-2" })
+                <a asp-action="Index" class="btn btn-secondary px-3">Volver a la lista</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Shop Detail End -->

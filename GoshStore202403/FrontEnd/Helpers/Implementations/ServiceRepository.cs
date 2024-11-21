@@ -24,7 +24,7 @@ namespace FrontEnd.Helpers.Implementations
         }
         public HttpResponseMessage PostResponse(string url, object model)
         {
-            return Client.PutAsJsonAsync(url, model).Result;
+            return Client.PostAsJsonAsync(url, model).Result;
         }
 
         public HttpResponseMessage DeleteResponse(string url)

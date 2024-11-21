@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.ComponentModel;
 
 namespace FrontEnd.Models
 {
@@ -6,12 +7,15 @@ namespace FrontEnd.Models
     {
         public int IdProducto { get; set; }
 
+        [DisplayName ("Nombre del Producto")]
         public string? NombreProducto { get; set; }
+        [DisplayName("Descripción del Producto")]
 
         public string? Descripcion { get; set; }
 
         public decimal? Precio { get; set; }
 
+        [DisplayName("Cantidad en Stock")]
         public int? Stock { get; set; }
 
         public int? CategoriaId { get; set; }
@@ -20,6 +24,7 @@ namespace FrontEnd.Models
 
         public string? categoryName { get; set; }
 
+        [DisplayName("Link de imagen")]
         public string? Imagen { get; set; }
 
         public string? Talla { get; set; }

@@ -31,7 +31,8 @@ namespace FrontEnd.Controllers
         // GET: ProductoController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var producto = _productoHelper.GetById(id);
+            return View(producto);
         }
 
         // GET: ProductoController/Create
@@ -93,16 +94,18 @@ namespace FrontEnd.Controllers
         // GET: ProductoController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var producto = _productoHelper.GetById(id);
+            return View(producto);
         }
 
         // POST: ProductoController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(ProductoViewModel producto)
         {
             try
             {
+                _productoHelper.DeleteProduct(producto.IdProducto);
                 return RedirectToAction(nameof(Index));
             }
             catch

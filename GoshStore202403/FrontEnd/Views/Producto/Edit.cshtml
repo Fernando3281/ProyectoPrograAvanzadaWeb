@@ -35,14 +35,14 @@
             </div>
             <div class="form-group">
                 <label asp-for="CategoriaId" class="control-label"></label>
-                <input asp-for="CategoriaId" class="form-control" />
+                @Html.DropDownListFor(model => model.CategoriaId, new SelectList(Model.Categorias, "IdCategoria", "NombreCategoria"), "Seleccione Categoria")
                 <span asp-validation-for="CategoriaId" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <!--<div class="form-group">
                 <label asp-for="categoryName" class="control-label"></label>
                 <input asp-for="categoryName" class="form-control" />
                 <span asp-validation-for="categoryName" class="text-danger"></span>
-            </div>
+            </div>-->
             <div class="form-group">
                 <label asp-for="Imagen" class="control-label"></label>
                 <input asp-for="Imagen" class="form-control" />

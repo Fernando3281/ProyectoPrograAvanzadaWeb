@@ -46,7 +46,7 @@ namespace FrontEnd.Helpers.Implementations
 
         public ProductoViewModel AddProduct(ProductoViewModel producto)
         {
-            HttpResponseMessage responseMessage = _repository.PostResponse("api/Producto", Convertir(producto));
+            HttpResponseMessage responseMessage = _repository.PostResponse("api/producto", Convertir(producto));
             if (responseMessage != null)
             {
                 var content = responseMessage.Content.ReadAsStringAsync().Result;
@@ -59,7 +59,7 @@ namespace FrontEnd.Helpers.Implementations
 
         public void DeleteProduct(int id)
         {
-            HttpResponseMessage responseMessage = _repository.DeleteResponse("api/producto" + id.ToString());
+            HttpResponseMessage responseMessage = _repository.DeleteResponse("api/producto/" + id.ToString());
             if (responseMessage != null)
             {
                 var content = responseMessage.Content;
@@ -71,7 +71,7 @@ namespace FrontEnd.Helpers.Implementations
 
         public ProductoViewModel EditProduct(ProductoViewModel ProductoViewModel)
         {
-            HttpResponseMessage responseMessage = _repository.PutResponse("api/producto", Convertir(ProductoViewModel));
+            HttpResponseMessage responseMessage = _repository.PutResponse("api/producto/" + ProductoViewModel.IdProducto.ToString(), Convertir(ProductoViewModel));
             if (responseMessage != null)
             {
                 var content = responseMessage.Content;
