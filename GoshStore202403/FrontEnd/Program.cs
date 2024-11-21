@@ -13,6 +13,7 @@ builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
 builder.Services.AddScoped<IUsuarioHelper, UsuarioHelper>();
 builder.Services.AddScoped<IProductoHelper, ProductoHelper>();
 builder.Services.AddScoped<ICategoriaHelper, CategoriaHelper>();
+builder.Services.AddScoped<IPedidoHelper, PedidoHelper>();
 
 #endregion
 

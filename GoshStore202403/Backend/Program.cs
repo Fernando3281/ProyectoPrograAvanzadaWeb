@@ -18,12 +18,14 @@ builder.Services.AddDbContext<DbGoshStoreContext>();
 builder.Services.AddScoped<IUnidadDeTrabajo, UnidadDeTrabajo>();
 builder.Services.AddScoped<IUsuarioDAL, UsuarioDALImpl>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
-
+//
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 builder.Services.AddScoped<ICategoriaDAL, CategoriaDALImpl>();
-
 builder.Services.AddScoped<IProductoService, ProductService>();
 builder.Services.AddScoped<IProductoDAL, ProductoDALImpl>();
+//
+builder.Services.AddScoped<IPedidoDAL, PedidoDALImpl>();
+builder.Services.AddScoped<IPedidoService, PedidoService>();
 
 #endregion
 
