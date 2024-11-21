@@ -10,6 +10,7 @@ namespace DAL.Interfaces
     {
 
         IUsuarioDAL UsuarioDAL { get; }
+        IPedidoDAL PedidoDAL { get; }
 
         bool Complete();
 
