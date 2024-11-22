@@ -18,15 +18,28 @@ namespace FrontEnd.Controllers
             this._categoriaHelper = categoriaHelper;
         }
         // GET: ProductoController
-        public ActionResult Index()
+        public ActionResult Index(string search)
         {
             var productos = _productoHelper.GetAll();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                productos = productos.Where(p => p.NombreProducto.Contains(search, StringComparison.OrdinalIgnoreCase)).ToList();
+            }
+
+            // Pasar el valor de búsqueda y si no se encontraron productos a la vista
+            ViewData["SearchTerm"] = search;
+            ViewData["NoProductsFound"] = productos.Count == 0;
+
             foreach (var item in productos)
             {
                 item.categoryName = _categoriaHelper.GetById((int)item.CategoriaId).NombreCategoria;
             }
+
             return View(productos);
         }
+
+
 
         // GET: ProductoController/Details/5
         public ActionResult Details(int id)

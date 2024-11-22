@@ -11,3 +11,4 @@ namespace FrontEnd.Helpers.Interfaces
         void Delete(int id);
     }
 }
+
