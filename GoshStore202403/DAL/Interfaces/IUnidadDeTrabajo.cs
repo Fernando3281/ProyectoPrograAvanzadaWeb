@@ -17,6 +17,9 @@ namespace DAL.Interfaces
         
         IPedidoDAL PedidoDAL { get; }
 
+        IDetallePedidoDAL DetallePedidoDAL { get; }
+
+
         bool Complete();
 
     }

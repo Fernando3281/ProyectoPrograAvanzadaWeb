@@ -17,19 +17,23 @@ namespace DAL.Implementations
         public IProductoDAL ProductoDAL { get; set; }
         
         public IPedidoDAL PedidoDAL { get; set; }
-       
+
+        public IDetallePedidoDAL DetallePedidoDAL { get; set; }
+
+
         private DbGoshStoreContext _dbGoshStoreContext;
 
         public UnidadDeTrabajo(DbGoshStoreContext dbGoshStoreContext,
-                        IUsuarioDAL usuarioDAL, ICategoriaDAL categoriaDAL, IProductoDAL productoDAL, IPedidoDAL pedidoDAL
-                       
-            ) 
+                        IUsuarioDAL usuarioDAL, ICategoriaDAL categoriaDAL, IProductoDAL productoDAL, IPedidoDAL pedidoDAL,
+
+           IDetallePedidoDAL detallePedidoDAL) 
         {
                 this._dbGoshStoreContext = dbGoshStoreContext;
                 this.UsuarioDAL = usuarioDAL;
                 this.CategoriaDAL = categoriaDAL; 
                 this.ProductoDAL = productoDAL;
                 this.PedidoDAL = pedidoDAL;
+            this.DetallePedidoDAL = detallePedidoDAL;
         }
        
 
