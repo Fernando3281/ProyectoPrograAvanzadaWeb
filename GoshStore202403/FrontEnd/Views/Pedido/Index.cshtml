@@ -4,50 +4,42 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<link rel="stylesheet" href="~/css/Pedidos.css" />
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdPedido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdUsuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaPedido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdPedido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdUsuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaPedido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.IdPedido }) |
-                @Html.ActionLink("Details", "Details", new { id=item.IdPedido }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdPedido })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="pedido-container">
+    <h1 class="page-title">Pedidos</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-create">Crear Nuevo Pedido</a>
+    </p>
+
+    <table class="pedido-table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdPedido)</th>
+                <th>@Html.DisplayNameFor(model => model.IdUsuario)</th>
+                <th>@Html.DisplayNameFor(model => model.FechaPedido)</th>
+                <th>@Html.DisplayNameFor(model => model.Estado)</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.IdPedido)</td>
+                    <td>@Html.DisplayFor(modelItem => item.IdUsuario)</td>
+                    <td>@Html.DisplayFor(modelItem => item.FechaPedido)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Estado)</td>
+                    <td class="action-buttons">
+                        @Html.ActionLink("Editar", "Edit", new { id = item.IdPedido }, new { @class = "btn btn-edit" }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.IdPedido }, new { @class = "btn btn-details" }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.IdPedido }, new { @class = "btn btn-delete" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
