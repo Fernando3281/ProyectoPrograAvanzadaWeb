@@ -1,47 +1,43 @@
-﻿@model IEnumerable<FrontEnd.Models.UsuarioViewModel>
+﻿
+
+@model IEnumerable<FrontEnd.Models.UsuarioViewModel>
 
 @{
     ViewData["Title"] = "Usuarios";
 }
+<link rel="stylesheet" href="~/css/Pedidos.css" />
 
-<h1>Lista de Usuarios</h1>
+<div class="pedido-container">
+    <h1 class="page-title">Lista de Usuarios</h1>
 
-<p>
-    <a asp-action="Create">Crear nuevo Usuario</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdUsuario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Correo)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdUsuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Correo)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.IdUsuario }) |
-                @Html.ActionLink("Detalles", "Details", new { id=item.IdUsuario }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.IdUsuario })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <p>
+        <a asp-action="Create" class="btn btn-create">Crear Nuevo Usuario</a>
+    </p>
+
+    <table class="pedido-table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.IdUsuario)</th>
+                <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+                <th>@Html.DisplayNameFor(model => model.Correo)</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.IdUsuario)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Correo)</td>
+                    <td class="action-buttons">
+                        @Html.ActionLink("Editar", "Edit", new { id = item.IdUsuario }, new { @class = "btn btn-edit" }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.IdUsuario }, new { @class = "btn btn-details" }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.IdUsuario }, new { @class = "btn btn-delete" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
