@@ -1,8 +1,202 @@
-﻿@{
+﻿@model IEnumerable<FrontEnd.Models.ProductoViewModel>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    #ContenidoHome {
+        margin: 0 auto;
+        margin-top: 70px;
+        padding: 1.5rem;
+    }
+
+    /* Header styles */
+    header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 1rem;
+    }
+
+    header p {
+        font-size: 1.3rem;
+        color: #555;
+        margin-bottom: 2rem;
+        font-weight: 500;
+    }
+
+    /* Section cards */
+    .product-card {
+        background: #ffffff;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 1.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Distribuye el contenido */
+        min-height: 350px; /* Altura mínima para los cards */
+    }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Image styling */
+        .product-card img {
+            max-height: 150px; /* Altura máxima para las imágenes */
+            width: 100%; /* Asegura que ocupen todo el ancho */
+            object-fit: cover; /* Recorta la imagen si es necesario */
+            margin-bottom: 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        /* Button alignment */
+        .product-card button {
+            margin-top: auto; /* Empuja el botón hacia el final del card */
+        }
+
+    /* Flexbox layout adjustments */
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem; /* Espacio entre las tarjetas */
+        justify-content: space-between;
+    }
+
+    .col-md-3 {
+        flex: 0 0 23%; /* Cada card ocupa un 22% del ancho */
+        margin-bottom: 1.5rem; /* Espacio adicional entre filas */
+    }
+
+    .feature-card, .product-card {
+        background: #ffffff;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        padding: 1.5rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 2rem;
+    }
+
+        .feature-card:hover, .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card .icon, .product-card img {
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3, .product-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: #333;
+        }
+
+        .feature-card p, .product-card p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .product-card .price {
+            color: #007bff;
+            font-weight: bold;
+            margin-top: 0.75rem;
+            font-size: 1.2rem;
+        }
+
+    /* Buttons */
+    button, .btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 0.25rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+        button:hover, .btn:hover {
+            background-color: #0056b3;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+    /* Feature card container */
+    .feature-cards-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 1.5rem;
+    }
+
+    /* Product cards layout */
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem; /* Espacio entre las tarjetas */
+        justify-content: space-between;
+    }
+
+    .col-md-3 {
+        flex: 0 0 22%; /* Para que cada card ocupe el 22% del ancho */
+        margin-bottom: 1.5rem; /* Espacio adicional entre filas */
+    }
+</style>
+
+<div class="container" id="ContenidoHome">
+    <header class="text-center mb-5">
+        <h1>Bienvenido a Nuestro Sitio Web</h1>
+        <p>Tu tienda única de ropa moderna y cómoda</p>
+        <a href="@Url.Action("Index", "Producto")" class="btn btn-lg">Comprar Ahora</a>
+    </header>
+
+    <section class="mb-5">
+        <h2 class="text-center mb-4">Características Destacadas</h2>
+        <div class="feature-cards-container">
+            <div class="col-md-4 feature-card">
+                <div class="icon text-primary"><i class="fas fa-shopping-bag fa-3x"></i></div>
+                <h3>Amplia Selección</h3>
+                <p>Explora nuestra extensa colección de ropa para todas las ocasiones.</p>
+            </div>
+            <div class="col-md-4 feature-card">
+                <div class="icon text-primary"><i class="fas fa-chart-line fa-3x"></i></div>
+                <h3>Últimas Tendencias</h3>
+                <p>Mantente al día con las tendencias más recientes en moda y estilo.</p>
+            </div>
+            <div class="col-md-4 feature-card">
+                <div class="icon text-primary"><i class="fas fa-shield-alt fa-3x"></i></div>
+                <h3>Calidad Garantizada</h3>
+                <p>Garantizamos la calidad y durabilidad de todos nuestros productos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="text-center mb-5">
+        <h2 class="mb-4">Productos Destacados</h2>
+        <div class="row">
+            @foreach (var item in Model.Take(4))
+            {
+                <div class="col-md-3">
+                    <!-- Enlace a la página de detalle del producto -->
+                    <a asp-controller="Producto" asp-action="InfoProducto" asp-route-id="@item.IdProducto" class="btn-action" title="Detalles">
+                        <div class="product-card">
+                            <img src="@item.Imagen" alt="@item.NombreProducto" class="img-fluid rounded mb-3">
+                            <h3>@item.NombreProducto</h3>
+                            <p class="price">
+                                @(item.Precio?.ToString("C") ?? "$0.00")
+                            </p>
+                            <button class="btn btn-outline-primary mt-3">Ver Detalles</button>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </section>
 </div>
