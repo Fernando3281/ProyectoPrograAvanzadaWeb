@@ -54,14 +54,22 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 body {
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #6C757D;
-  text-align: left;
-  background-color: #F5F5F5;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6C757D;
+    text-align: left;
+    background: linear-gradient(to bottom, #cce4ff, #ffffff);
+}
+
+.footer {
+    position: relative !important;
+    background-color: var(--light);
+    color: var(--dark);
+    padding: 1rem;
+    text-align: center;
+    border-top: 1px solid var(--gray);
+    font-size: 0.875rem;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -598,11 +606,11 @@ pre code {
 .container-md,
 .container-lg,
 .container-xl {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 @media (min-width: 576px) {

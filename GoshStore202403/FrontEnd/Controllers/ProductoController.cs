@@ -17,7 +17,7 @@ namespace FrontEnd.Controllers
             this._productoHelper = productoHelper;
             this._categoriaHelper = categoriaHelper;
         }
-        // GET: ProductoController
+        // GET: ProductoController/Index
         public ActionResult Index(string search)
         {
             var productos = _productoHelper.GetAll();
@@ -125,6 +125,18 @@ namespace FrontEnd.Controllers
             {
                 return View();
             }
+        }
+
+        // GET: ProductoController/Details/5
+        public ActionResult InfoProducto(int id)
+        {
+            var producto = _productoHelper.GetById(id);
+            if (producto == null)
+            {
+                return NotFound();
+            }
+
+            return View("DetailsProducto", producto);
         }
     }
 }
