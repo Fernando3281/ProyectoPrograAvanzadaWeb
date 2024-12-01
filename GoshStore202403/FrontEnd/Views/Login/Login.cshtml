@@ -4,160 +4,12 @@
     Layout = null;
 }
 
+<link href="~/css/Login.css" rel="stylesheet" asp-append-version="true" />
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <title>Login</title>
-
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-
-    <style>
-        *, *:before, *:after {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #080710;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* Background with SVG Circles */
-        .background {
-            position: fixed;
-            inset: 0;
-            z-index: -10;
-        }
-
-            .background .black-bg {
-                position: absolute;
-                inset: 0;
-                background-color: black;
-            }
-
-            .background svg {
-                position: absolute;
-                inset: 0;
-                width: 100%;
-                height: 100%;
-            }
-
-            .background circle {
-                fill-opacity: 0.3;
-            }
-
-        /* Increased intensity of colors */
-        .circle-1 {
-            fill: rgba(255, 99, 132, 0.7);
-        }
-        /* Strong Red */
-        .circle-2 {
-            fill: rgba(54, 162, 235, 0.7);
-        }
-        /* Strong Blue */
-        .circle-3 {
-            fill: rgba(255, 159, 64, 0.7);
-        }
-        /* Strong Orange */
-        .circle-4 {
-            fill: rgba(75, 192, 192, 0.7);
-        }
-        /* Strong Teal */
-        .circle-5 {
-            fill: rgba(153, 102, 255, 0.7);
-        }
-        /* Strong Purple */
-
-        /* Form Container */
-        .form-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .form-wrapper {
-            width: 100%;
-            max-width: 400px;
-            padding: 40px 30px;
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
-            color: white;
-        }
-
-            .form-wrapper h1 {
-                font-size: 2rem;
-                font-weight: 600;
-                text-align: center;
-            }
-
-            .form-wrapper p {
-                text-align: center;
-                color: #d1d1d1;
-                margin-top: 10px;
-            }
-
-        /* Form Elements */
-        label {
-            display: block;
-            margin-top: 20px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        input {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            margin-top: 8px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 5px;
-            font-size: 16px;
-            color: white;
-            border: none;
-        }
-
-            input::placeholder {
-                color: #aaa;
-            }
-
-        button {
-            margin-top: 30px;
-            width: 100%;
-            padding: 15px;
-            background-color: #ffffff;
-            color: #080710;
-            font-weight: 600;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-        }
-
-            button:hover {
-                background-color: #f5f5f5;
-            }
-
-        .checkbox-wrapper {
-            display: flex;
-            align-items: center;
-            margin-top: 15px;
-        }
-
-            .checkbox-wrapper input {
-                width: 18px;
-                height: 18px;
-                margin-right: 10px;
-            }
-
-            .checkbox-wrapper label {
-                font-size: 14px;
-            }
-    </style>
+    <title>Iniciar Sesión</title>
 </head>
 <body>
     <div class="background">
@@ -173,27 +25,29 @@
 
     <div class="form-container">
         <div class="form-wrapper">
-            <h1>Login</h1>
-            <p>Enter your credentials to access your account</p>
+            <h1>Iniciar Sesión</h1>
+            <p>Ingresa tus credenciales para acceder a tu cuenta</p>
 
             <form asp-action="Login" method="post">
                 @Html.HiddenFor(model => model.ReturnUrl)
 
-                <label asp-for="UserName">Username</label>
-                <input asp-for="UserName" placeholder="Email or Phone" />
+                <label asp-for="UserName">Usuario</label>
+                <input asp-for="UserName" placeholder="Nombre de Usuario" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
 
-                <label asp-for="Password">Password</label>
-                <input asp-for="Password" type="password" placeholder="Password" />
+                <label asp-for="Password">Contraseña</label>
+                <input asp-for="Password" type="password" placeholder="Contraseña" />
                 <span asp-validation-for="Password" class="text-danger"></span>
 
                 <div class="checkbox-wrapper">
                     <input type="checkbox" asp-for="RememberLogin" class="form-check-input" />
-                    <label asp-for="RememberLogin">Remember me</label>
+                    <label asp-for="RememberLogin">Mantener Sesión Activa</label>
                 </div>
 
-                <button type="submit">Log In</button>
+                <button type="submit">Ingresar</button>
             </form>
+
+            <a href="#" class="register-link">No tienes cuenta? Registrate Aqui</a>
         </div>
     </div>
 

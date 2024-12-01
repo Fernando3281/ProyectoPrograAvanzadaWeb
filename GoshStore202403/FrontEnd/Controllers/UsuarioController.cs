@@ -106,7 +106,7 @@ namespace FrontEnd.Controllers
         [HttpGet("Perfil")]
         public IActionResult Perfil()
         {
-            // Obtén el id del usuario actual de alguna manera, por ejemplo, del contexto de autenticación
+            // Se obtiene el id del usuario actual por medio del metodo ObtenerIdUsuarioActual aunque no se encuentra funcional
             int userId = ObtenerIdUsuarioActual();
             var usuario = _usuarioHelper.GetUsuario(userId);
             return View(usuario);
@@ -114,10 +114,9 @@ namespace FrontEnd.Controllers
 
         private int ObtenerIdUsuarioActual()
         {
-            // Implementa la lógica para obtener el id del usuario actual
+            // es para obtener el id del usuario actual (corregir)
             if (User.Identity.IsAuthenticated)
             {
-                // Suponiendo que el id del usuario está almacenado en el claim "UserId"
                 var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "UserId");
                 if (userIdClaim != null)
                 {

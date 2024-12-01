@@ -7,14 +7,8 @@
     --transition-speed: 0.3s;
 }
 
-/* Global Styles */
-body {
-    background-color: #f4f6f9;
-}
-
-/* Card */
 #product-main-card {
-    max-width: 1100px;
+    max-width: 1300px;
     border-radius: var(--border-radius);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
     overflow: hidden;
@@ -23,7 +17,6 @@ body {
     background-color: white;
 }
 
-/* Imagen */
 #product-image-section {
     background-color: #f0f4f8;
     max-height: 500px;
@@ -34,20 +27,14 @@ body {
 }
 
 #product-main-image {
-    width: 100%;
+    width: auto;
     height: auto;
+    max-width: 110%;
+    max-height: 110%;
     object-fit: contain;
-    max-height: 500px;
-    transition: transform var(--transition-speed);
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+
 }
 
-    #product-main-image:hover {
-        transform: scale(1.03);
-    }
-
-/* Título y Descripción */
 #product-title {
     font-size: 2.5rem;
     font-weight: 700;
@@ -69,7 +56,6 @@ body {
     border-radius: 8px;
 }
 
-/* Precio */
 #product-price-container {
     display: flex;
     align-items: center;
@@ -93,7 +79,6 @@ body {
     letter-spacing: -0.05em;
 }
 
-/* Stock y Talla */
 #product-stock-badge {
     font-size: 0.9rem;
     padding: 0.4rem 0.8rem;
@@ -108,7 +93,6 @@ body {
     color: var(--secondary-color);
 }
 
-/* Formulario de cantidad */
 #quantity-selector {
     width: 80px;
     text-align: center;
@@ -124,9 +108,9 @@ body {
         box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
     }
 
-/* Botones */
 #add-to-cart-btn,
 #buy-now-btn {
+    color: white;
     font-size: 1rem;
     font-weight: 600;
     padding: 12px 24px;
@@ -162,7 +146,6 @@ body {
     box-shadow: 0 4px 10px rgba(33, 136, 56, 0.3);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     #product-title {
         font-size: 1.8rem;

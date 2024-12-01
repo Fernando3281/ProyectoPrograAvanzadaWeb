@@ -128,7 +128,6 @@ namespace FrontEnd.Controllers
         }
 
         // GET: ProductoController/Details/5
-        // Asegúrate de que esta acción exista y devuelva la vista correcta
         public ActionResult InfoProducto(int id)
         {
             var producto = _productoHelper.GetById(id);
