@@ -13,6 +13,8 @@ namespace DAL.Interfaces
 
         ICategoriaDAL CategoriaDAL { get; }
 
+        IDireccioneDAL DireccioneDAL { get; }
+
         IProductoDAL ProductoDAL { get; }
         
         IPedidoDAL PedidoDAL { get; }
