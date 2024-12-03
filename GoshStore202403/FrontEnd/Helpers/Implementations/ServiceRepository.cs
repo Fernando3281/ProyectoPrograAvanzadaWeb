@@ -9,8 +9,10 @@ namespace FrontEnd.Helpers.Implementations
         public ServiceRepository(HttpClient _client, IConfiguration configuration)
         {
             Client = _client;
-            string baseUrl = "http://localhost:5028";
+            string baseUrl = configuration.GetValue<string>("BackEnd:Url")?? "";
+            string apikey = configuration.GetValue<string>("BackEnd:ApiKey") ?? "";
             Client.BaseAddress = new Uri(baseUrl);
+            Client.DefaultRequestHeaders.Add("ApiKey", apikey);
         }
 
         public HttpResponseMessage GetResponse(string url)
@@ -24,7 +26,7 @@ namespace FrontEnd.Helpers.Implementations
         }
         public HttpResponseMessage PostResponse(string url, object model)
         {
-            return Client.PutAsJsonAsync(url, model).Result;
+            return Client.PostAsJsonAsync(url, model).Result;
         }
 
         public HttpResponseMessage DeleteResponse(string url)

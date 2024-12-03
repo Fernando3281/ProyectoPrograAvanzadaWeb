@@ -1,0 +1,41 @@
+﻿@model FrontEnd.Models.ProductoViewModel
+
+@{
+    ViewData["Title"] = "Detalles del Producto";
+}
+
+<!-- Enlace al archivo CSS -->
+<link rel="stylesheet" href="~/css/BtnDetailsProductos.css" />
+
+<div class="container-fluid py-5">
+    <div class="row px-xl-5">
+        <!-- Columna de imagen -->
+        <div class="col-lg-5 pb-5">
+            <div class="product-detail-img">
+                <img class="img-fluid w-100" src="@Url.Content(Model.Imagen)" alt="@Model.NombreProducto">
+            </div>
+        </div>
+
+        <!-- Columna de detalles del producto -->
+        <div class="col-lg-7 pb-5">
+            <h1 class="font-weight-semi-bold">@Model.NombreProducto</h1>
+            <h4 class="text-primary mb-3">₡@Model.Precio</h4>
+            <p class="mb-4">@Model.Descripcion</p>
+
+            <div class="d-flex mb-3">
+                <strong class="text-dark mr-3">Stock:</strong>
+                <span>@Model.Stock</span>
+            </div>
+
+            <div class="d-flex mb-3">
+                <strong class="text-dark mr-3">Talla:</strong>
+                <span>@Model.Talla</span>
+            </div>
+
+            <div class="d-flex align-items-center mb-4 pt-2">
+                @Html.ActionLink("Editar", "Edit", new { id = Model.IdProducto }, new { @class = "btn btn-primary px-3 mr-2" })
+                <a asp-action="Index" class="btn btn-secondary px-3">Volver a la lista</a>
+            </div>
+        </div>
+    </div>
+</div>

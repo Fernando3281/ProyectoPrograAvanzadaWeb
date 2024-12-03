@@ -1,0 +1,59 @@
+﻿@model FrontEnd.Models.PedidoViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<link rel="stylesheet" href="~/css/Pedidos.css" />
+
+<div class="edit-container">
+    <h1 class="page-title">Editar Pedido</h1>
+    <h4>Detalles del Pedido</h4>
+    <hr />
+
+    <div class="form-container">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="IdPedido" class="form-label"></label>
+                <input asp-for="IdPedido" class="form-input" readonly />
+                <span asp-validation-for="IdPedido" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdUsuario" class="form-label"></label>
+                <input asp-for="IdUsuario" class="form-input" />
+                <span asp-validation-for="IdUsuario" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FechaPedido" class="form-label"></label>
+                <input asp-for="FechaPedido" class="form-input" />
+                <span asp-validation-for="FechaPedido" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Estado" class="form-label"></label>
+                <input asp-for="Estado" class="form-input" />
+                <span asp-validation-for="Estado" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                @Html.HiddenFor(model => model.IdPedido)
+                <input type="submit" value="Guardar Cambios" class="btn btn-save" />
+            </div>
+        </form>
+    </div>
+
+    <div class="back-link">
+        <a asp-action="Index" class="btn btn-back">Volver a la Lista</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

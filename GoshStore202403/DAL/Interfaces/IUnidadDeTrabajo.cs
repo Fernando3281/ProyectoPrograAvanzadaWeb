@@ -12,6 +12,7 @@ namespace DAL.Interfaces
         IUsuarioDAL UsuarioDAL { get; }
 
         ICategoriaDAL CategoriaDAL { get; }
+
         IDireccioneDAL DireccioneDAL { get; }
 
         IProductoDAL ProductoDAL { get; }

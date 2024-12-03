@@ -8,7 +8,6 @@ namespace FrontEnd.Controllers
 {
     public class UsuarioController : Controller
     {
-
         IUsuarioHelper _usuarioHelper;
 
         public UsuarioController(IUsuarioHelper usuarioHelper)
@@ -57,7 +56,7 @@ namespace FrontEnd.Controllers
         public ActionResult Edit(int id)
         {
             var usuario = _usuarioHelper.GetUsuario(id);
-            return View(usuario);   
+            return View(usuario);
         }
 
         // POST: UsuarioController/Edit/5
@@ -65,7 +64,7 @@ namespace FrontEnd.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(UsuarioViewModel usuario)
         {
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -80,7 +79,6 @@ namespace FrontEnd.Controllers
 
             return View(usuario);
         }
-
 
         // GET: UsuarioController/Delete/5
         public ActionResult Delete(int id)
@@ -103,6 +101,29 @@ namespace FrontEnd.Controllers
             {
                 return View();
             }
+        }
+
+        [HttpGet("Perfil")]
+        public IActionResult Perfil()
+        {
+            // Se obtiene el id del usuario actual por medio del metodo ObtenerIdUsuarioActual aunque no se encuentra funcional
+            int userId = ObtenerIdUsuarioActual();
+            var usuario = _usuarioHelper.GetUsuario(userId);
+            return View(usuario);
+        }
+
+        private int ObtenerIdUsuarioActual()
+        {
+            // es para obtener el id del usuario actual (corregir)
+            if (User.Identity.IsAuthenticated)
+            {
+                var userIdClaim = User.Claims.FirstOrDefault(c => c.Type == "UserId");
+                if (userIdClaim != null)
+                {
+                    return int.Parse(userIdClaim.Value);
+                }
+            }
+            throw new Exception("No se pudo obtener el id del usuario actual.");
         }
     }
 }

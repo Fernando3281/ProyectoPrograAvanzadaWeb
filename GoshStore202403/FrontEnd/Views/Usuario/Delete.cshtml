@@ -1,32 +1,38 @@
 ﻿@model FrontEnd.Models.UsuarioViewModel
 
-<h2>Eliminar Usuario</h2>
+@{
+    ViewData["Title"] = "Delete";
+}
 
-<h3>¿Estás seguro de que deseas eliminar este usuario?</h3>
-<div>
-    <h4>Usuario</h4>
+<!-- Enlace al archivo CSS -->
+<link rel="stylesheet" href="~/css/BtnEliminar.css" />
+
+<div class="delete-container">
+    <h1 class="page-title">Eliminar Usuario</h1>
+    <h3 class="confirmation-message">¿Estás seguro de que deseas eliminar este usuario?</h3>
+    <h4>Detalles del Usuario</h4>
     <hr />
-    <dl class="dl-horizontal">
+
+    <dl class="details-list">
         <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
+            <strong>@Html.DisplayNameFor(model => model.Nombre):</strong>
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Nombre)
         </dd>
+
         <dt>
-            @Html.DisplayNameFor(model => model.Correo)
+            <strong>@Html.DisplayNameFor(model => model.Correo):</strong>
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Correo)
         </dd>
     </dl>
 
-    @using (Html.BeginForm())
-    {
-        @Html.HiddenFor(model => model.IdUsuario) 
-        <p>
-            <input type="submit" value="Eliminar" />
-            @Html.ActionLink("Cancelar", "Index")
-        </p>
-    }
+    <form asp-action="Delete" method="post" class="form-actions">
+        @Html.HiddenFor(model => model.IdUsuario)
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-back">Volver a la Lista</a>
+    </form>
 </div>
+

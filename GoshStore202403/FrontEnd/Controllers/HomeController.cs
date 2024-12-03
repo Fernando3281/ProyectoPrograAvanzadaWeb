@@ -1,24 +1,36 @@
+using FrontEnd.Helpers.Interfaces;
 using FrontEnd.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace FrontEnd.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
+        IProductoHelper _productoHelper;
+        ICategoriaHelper _categoriaHelper;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IProductoHelper productoHelper, ICategoriaHelper categoriaHelper)
         {
+            this._productoHelper = productoHelper;
+            this._categoriaHelper = categoriaHelper;
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public ActionResult Index()
         {
-            return View();
+            var productos = _productoHelper.GetAll();
+            foreach (var item in productos)
+            {
+                item.categoryName = _categoriaHelper.GetById((int)item.CategoriaId).NombreCategoria;
+            }
+                return View(productos);
         }
 
-        public IActionResult Privacy()
+        public IActionResult Contacto()
         {
             return View();
         }

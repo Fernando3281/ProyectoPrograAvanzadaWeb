@@ -1,0 +1,43 @@
+﻿@model FrontEnd.Models.PedidoViewModel
+
+@{
+    ViewData["Title"] = "Crear Pedido";
+}
+
+
+<link rel="stylesheet" href="~/css/Pedidos.css" />
+
+<div class="create-container">
+    <h1 class="page-title">Crear Nuevo Pedido</h1>
+    <h4>Datos del Pedido</h4>
+    <hr />
+
+    <div class="form-container">
+        <form asp-action="Create" class="form">
+            <div asp-validation-summary="ModelOnly" class="text-danger validation-summary"></div>
+
+            <div class="form-group">
+                <label asp-for="IdUsuario" class="form-label"></label>
+                <input asp-for="IdUsuario" class="form-control" placeholder="ID del Usuario" />
+                <span asp-validation-for="IdUsuario" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FechaPedido" class="form-label"></label>
+                <input asp-for="FechaPedido" class="form-control" placeholder="Fecha del Pedido" />
+                <span asp-validation-for="FechaPedido" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Estado" class="form-label"></label>
+                <input asp-for="Estado" class="form-control" placeholder="Estado del Pedido" />
+                <span asp-validation-for="Estado" class="text-danger"></span>
+            </div>
+
+            <div class="form-actions">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
+            </div>
+        </form>
+    </div>
+</div>

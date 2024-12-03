@@ -1,0 +1,87 @@
+﻿@model FrontEnd.Models.ProductoViewModel
+
+@{
+    ViewData["Title"] = "Eliminar Producto";
+}
+
+
+<link rel="stylesheet" href="~/css/BtnEliminar.css" />
+
+<div class="delete-container">
+    <h1 class="page-title">Eliminar Producto</h1>
+    <h3 class="confirmation-message">¿Estás seguro de que deseas eliminar este producto?</h3>
+    <h4>Detalles del Producto</h4>
+    <hr />
+
+    <dl class="details-list">
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.IdProducto):</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdProducto)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.NombreProducto):</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NombreProducto)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.Descripcion):</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.Precio):</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.Stock):</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.CategoriaId):</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CategoriaId)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.categoryName):</strong>
+
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.categoryName)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.Imagen):</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Imagen)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.Talla):</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Talla)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete" method="post" class="form-actions">
+        @Html.HiddenFor(model => model.IdProducto)
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-back">Volver a la Lista</a>
+    </form>
+</div>
