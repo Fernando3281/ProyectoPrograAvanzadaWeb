@@ -93,7 +93,7 @@ namespace Backend.Services.Implementations
             }
             catch (DbUpdateException dbEx)
             {
-                throw new Exception("Error al agregar el usuario a la base de datos.", dbEx);
+                throw new Exception("Error al eliminar el usuario de la base de datos.", dbEx);
             }
             catch (Exception ex) 
             {

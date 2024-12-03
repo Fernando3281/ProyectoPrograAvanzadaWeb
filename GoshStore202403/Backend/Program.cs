@@ -18,6 +18,23 @@ builder.Services.AddDbContext<DbGoshStoreContext>();
 builder.Services.AddScoped<IUnidadDeTrabajo, UnidadDeTrabajo>();
 builder.Services.AddScoped<IUsuarioDAL, UsuarioDALImpl>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+<<<<<<< Updated upstream
+=======
+//
+builder.Services.AddScoped<ICategoriaService, CategoriaService>();
+builder.Services.AddScoped<ICategoriaDAL, CategoriaDALImpl>();
+builder.Services.AddScoped<IDireccioneDAL, DireccioneDALImpl>();
+builder.Services.AddScoped<IDireccioneService, DireccioneService>();
+builder.Services.AddScoped<IProductoService, ProductService>();
+builder.Services.AddScoped<IProductoDAL, ProductoDALImpl>();
+//
+builder.Services.AddScoped<IPedidoDAL, PedidoDALImpl>();
+builder.Services.AddScoped<IPedidoService, PedidoService>();
+builder.Services.AddScoped<IDetallePedidoDAL, DetallePedidoDALImpl>();
+builder.Services.AddScoped<IDetallePedidoService, DetallePedidoService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+
+>>>>>>> Stashed changes
 
 
 #endregion
