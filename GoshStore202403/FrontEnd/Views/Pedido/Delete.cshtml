@@ -1,0 +1,51 @@
+﻿@model FrontEnd.Models.PedidoViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<!-- Enlace al archivo CSS -->
+<link rel="stylesheet" href="~/css/BtnEliminar.css" />
+
+<div class="delete-container">
+    <h1 class="page-title">Eliminar Pedido</h1>
+    <h3 class="confirmation-message">¿Estás seguro de que deseas eliminar este pedido?</h3>
+    <h4>Detalles del Pedido</h4>
+    <hr />
+
+    <dl class="details-list">
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.IdPedido):</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdPedido)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.IdUsuario):</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdUsuario)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.FechaPedido):</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaPedido)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.Estado):</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete" method="post" class="form-actions">
+        @Html.HiddenFor(model => model.IdPedido)
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-back">Volver a la Lista</a>
+    </form>
+</div>

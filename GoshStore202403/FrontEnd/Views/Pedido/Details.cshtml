@@ -1,0 +1,49 @@
+﻿@model FrontEnd.Models.PedidoViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<link rel="stylesheet" href="~/css/BtnDetails.css" />
+
+<div class="details-container">
+    <h1 class="page-title">Detalles del Pedido</h1>
+    <h4>Información del Pedido</h4>
+    <hr />
+
+    <dl class="details-list">
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.IdPedido):</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdPedido)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.IdUsuario):</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdUsuario)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.FechaPedido):</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FechaPedido)
+        </dd>
+
+        <dt>
+            <strong>@Html.DisplayNameFor(model => model.Estado):</strong>
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+    </dl>
+
+    <div class="action-links">
+        @Html.ActionLink("Editar", "Edit", new { id = Model.IdPedido }, new { @class = "btn btn-edit" }) |
+        <a asp-action="Index" class="btn btn-back">Volver a la Lista</a>
+    </div>
+</div>

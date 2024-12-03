@@ -1,0 +1,95 @@
+﻿.contact-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.logo-container {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    max-height: 80px;
+    margin-bottom: 1rem;
+}
+
+.description {
+    font-size: 1.1rem;
+    color: #6b7280;
+    line-height: 1.6;
+}
+
+.contact-container {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.contact-info {
+    background-color: #6b21a8;
+    color: #ffffff;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.social-icons {
+    margin-top: 1.5rem;
+}
+
+.social-link {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    transition: color 0.3s ease;
+}
+
+.social-link:hover {
+    color: #d8b4fe;
+}
+
+.contact-form {
+    padding: 2rem;
+}
+
+.contact-form .form-label {
+    font-weight: bold;
+    color: #374151;
+}
+
+.contact-form .btn {
+    background-color: #6b21a8;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form .btn:hover {
+    background-color: #4c1d95;
+}

@@ -1,0 +1,60 @@
+﻿@model FrontEnd.Models.UserViewModel
+
+@{
+    Layout = null;
+}
+
+<link href="~/css/Login.css" rel="stylesheet" asp-append-version="true" />
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+    <div class="background">
+        <div class="black-bg"></div>
+        <svg xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10%" cy="10%" r="5%" class="circle-1" />
+            <circle cx="90%" cy="10%" r="10%" class="circle-2" />
+            <circle cx="50%" cy="50%" r="15%" class="circle-3" />
+            <circle cx="20%" cy="80%" r="7%" class="circle-4" />
+            <circle cx="80%" cy="90%" r="12%" class="circle-5" />
+        </svg>
+    </div>
+
+    <div class="form-container">
+        <div class="form-wrapper">
+            <h1>Iniciar Sesión</h1>
+            <p>Ingresa tus credenciales para acceder a tu cuenta</p>
+
+            <form asp-action="Login" method="post">
+                @Html.HiddenFor(model => model.ReturnUrl)
+
+                <label asp-for="UserName">Usuario</label>
+                <input asp-for="UserName" placeholder="Nombre de Usuario" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+
+                <label asp-for="Password">Contraseña</label>
+                <input asp-for="Password" type="password" placeholder="Contraseña" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" asp-for="RememberLogin" class="form-check-input" />
+                    <label asp-for="RememberLogin">Mantener Sesión Activa</label>
+                </div>
+
+                <button type="submit">Ingresar</button>
+            </form>
+
+            <a href="#" class="register-link">No tienes cuenta? Registrate Aqui</a>
+        </div>
+    </div>
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+</body>
+</html>

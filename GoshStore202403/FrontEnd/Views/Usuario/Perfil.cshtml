@@ -1,0 +1,32 @@
+﻿@model FrontEnd.Models.UsuarioViewModel
+
+@{
+    ViewData["Title"] = "Perfil";
+}
+
+<!-- Revisar Controlador -->
+
+<h2>@ViewData["Title"]</h2>
+
+<div>
+    <h3>Información del Usuario</h3>
+    <p><strong>Nombre:</strong> @Model.Nombre</p>
+    <p><strong>Email:</strong> @Model.Correo</p>
+</div>
+
+<div>
+    <h3>Historial de Pedidos</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Número de Pedido</th>
+                <th>Fecha</th>
+                <th>Total</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+</div>

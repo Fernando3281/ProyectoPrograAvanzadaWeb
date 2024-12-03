@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuentranos Aqui</title>
+    <link rel="stylesheet" href="~/css/Contacto.css"/>
+</head>
+
+<body>
+        <div class="contact-section">
+            <div class="container">
+                <div class="contact-container">
+                    <div class="row g-0">
+                        <div class="col-md-4 contact-info">
+                            <h2 class="mb-4" style="color:white;">Contáctanos</h2>
+                            <p class="mb-4">Estamos aquí para ayudarte con cualquier pregunta sobre nuestros productos o servicios.</p>
+
+                            <div class="mb-3">
+                                <i class="fas fa-phone me-2"></i>
+                                <span>+506 33333333</span>
+                            </div>
+                            <div class="mb-3">
+                                <i class="fas fa-envelope me-2"></i>
+                                <span>ejemplo@gmail.com</span>
+                            </div>
+                            <div class="mb-4">
+                                <i class="fas fa-map-marker-alt me-2"></i>
+                                <span>Somos Tienda 100% Virtual</span>
+                            </div>
+
+                            <div class="social-icons">
+                                <a href="https://www.instagram.com/gosh_wear77/?hl=es-la" class="text-decoration-none"><i class="fab fa-instagram fa-2x" style="color: orangered;"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8 p-4">
+                            <h2 class="mb-4 text-dark">Envíanos un mensaje</h2>
+                            <form>
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Nombre</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message" class="form-label">Mensaje</label>
+                                    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                                </div>
+                                <button type="button" class="btn btn-primary" style="background-color: orangered; border-color: yellow;" onclick="sendEmail()">Enviar mensaje</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        function sendEmail() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var message = document.getElementById("message").value;
+            var mailto = "mailto:gosh_wear@gmail.com?subject=Mensaje desde Gosh Store Web&body=Nombre: " + name + "%0D%0AEmail: " + email + "%0D%0AMensaje: " + message;
+            window.open(mailto);
+        }
+    </script>
+</body>
+</html>

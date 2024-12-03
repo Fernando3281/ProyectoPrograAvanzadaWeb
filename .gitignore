@@ -400,3 +400,7 @@ Entities/DbGoshStoreContext.cs
 
 # JetBrains Rider
 *.sln.iml
+
+# Ignorar los cambios en el string de conexion
+DbGoshStoreContext.cs
+GoshStore202403/Entities/Entities/DbGoshStoreContext.cs
