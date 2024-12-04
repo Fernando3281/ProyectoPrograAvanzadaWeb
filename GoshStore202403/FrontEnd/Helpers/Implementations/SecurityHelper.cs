@@ -32,5 +32,25 @@ namespace FrontEnd.Helpers.Implementations
                 throw;
             }
         }
+
+
+        public RegisterAPI Register(UserViewModel user)
+        {
+            try
+            {
+                HttpResponseMessage response = ServiceRepository
+                                                    .PostResponse("/api/Auth/register", new { user.UserName, user.Password, user.Email });
+                var content = response.Content.ReadAsStringAsync().Result;
+                RegisterAPI registerAPI= JsonConvert.DeserializeObject<RegisterAPI>(content);
+
+                return registerAPI;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Iniciar Sesión</title>
+    <title>Registrarse</title>
 </head>
 <body>
     <div class="background">
@@ -25,15 +25,19 @@
 
     <div class="form-container">
         <div class="form-wrapper">
-            <h1>Iniciar Sesión</h1>
-            <p>Ingresa tus credenciales para acceder a tu cuenta</p>
+            <h1>Registrarse</h1>
+            <p>Completa los campos para crear una cuenta</p>
 
-            <form asp-action="Login" method="post">
+            <form asp-action="Register" method="post">
                 @Html.HiddenFor(model => model.ReturnUrl)
 
                 <label asp-for="UserName">Usuario</label>
                 <input asp-for="UserName" placeholder="Nombre de Usuario" />
                 <span asp-validation-for="UserName" class="text-danger"></span>
+
+                <label asp-for="Email">Correo Electrónico</label>
+                <input asp-for="Email" placeholder="Correo Electrónico" />
+                <span asp-validation-for="Email" class="text-danger"></span>
 
                 <label asp-for="Password">Contraseña</label>
                 <input asp-for="Password" type="password" placeholder="Contraseña" />
@@ -44,10 +48,10 @@
                     <label asp-for="RememberLogin">Mantener Sesión Activa</label>
                 </div>
 
-                <button type="submit">Ingresar</button>
+                <button type="submit">Registrarse</button>
             </form>
 
-            <a href="Register" class="register-link">No tienes cuenta? Registrate Aqui</a>
+            <a href="Login" class="register-link">¿Ya tienes cuenta? Inicia Sesión Aquí</a>
         </div>
     </div>
 
@@ -58,3 +62,4 @@
     }
 </body>
 </html>
+

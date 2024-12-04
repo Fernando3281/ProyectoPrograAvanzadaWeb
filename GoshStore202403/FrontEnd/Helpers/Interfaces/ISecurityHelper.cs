@@ -6,5 +6,7 @@ namespace FrontEnd.Helpers.Interfaces
     public interface ISecurityHelper
     {
         LoginAPI Login(UserViewModel user);
+
+        RegisterAPI Register(UserViewModel user);
     }
 }
