@@ -10,6 +10,10 @@ namespace FrontEnd.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        
+        [DataType(DataType.EmailAddress)]
+        public string? Email { get; set; }
+
 
         public bool RememberLogin { get; set; }
 

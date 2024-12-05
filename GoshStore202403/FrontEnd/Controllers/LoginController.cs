@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using System.Net.Http;
 
 namespace FrontEnd.Controllers
 {
@@ -32,6 +33,7 @@ namespace FrontEnd.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    ModelState.Remove("Email");
                     var loging = securityHelper.Login(user);
 
                     TokenAPI tokenAPI = loging.Token;
@@ -85,6 +87,34 @@ namespace FrontEnd.Controllers
             }
 
         }
+
+        public IActionResult Register()
+        {
+            return View(new UserViewModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(UserViewModel user)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    // Send registration data to the API using HttpClient or your security helper
+                    var registrationResult = securityHelper.Register(user);
+
+                }
+
+                // If we reach here, something went wrong
+                return RedirectToAction("Login");
+            }
+            catch (Exception ex)
+            {
+                // Handle unexpected exceptions
+                ViewBag.Message = $"An unexpected error occurred: {ex.Message}";
+                return View(user);
+            }
+        }
+
     }
 }
-
