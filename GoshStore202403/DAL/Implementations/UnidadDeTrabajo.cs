@@ -22,25 +22,26 @@ namespace DAL.Implementations
 
         public IDetallePedidoDAL DetallePedidoDAL { get; set; }
 
+        public ICarritoDAL CarritoDAL { get; set; }
+
 
         private DbGoshStoreContext _dbGoshStoreContext;
 
         public UnidadDeTrabajo(DbGoshStoreContext dbGoshStoreContext,
 
                         IUsuarioDAL usuarioDAL, ICategoriaDAL categoriaDAL, IDireccioneDAL direccioneDAL, IProductoDAL productoDAL, IPedidoDAL pedidoDAL,
-
-
-           IDetallePedidoDAL detallePedidoDAL) 
+           IDetallePedidoDAL detallePedidoDAL, ICarritoDAL carritoDAL)
         {
-                this._dbGoshStoreContext = dbGoshStoreContext;
-                this.UsuarioDAL = usuarioDAL;
-                this.CategoriaDAL = categoriaDAL;
-                this.DireccioneDAL = direccioneDAL;
-                this.ProductoDAL = productoDAL;
-                this.PedidoDAL = pedidoDAL;
+            this._dbGoshStoreContext = dbGoshStoreContext;
+            this.UsuarioDAL = usuarioDAL;
+            this.CategoriaDAL = categoriaDAL;
+            this.DireccioneDAL = direccioneDAL;
+            this.ProductoDAL = productoDAL;
+            this.PedidoDAL = pedidoDAL;
             this.DetallePedidoDAL = detallePedidoDAL;
+            CarritoDAL = carritoDAL;
         }
-       
+
 
         public bool Complete()
         {
