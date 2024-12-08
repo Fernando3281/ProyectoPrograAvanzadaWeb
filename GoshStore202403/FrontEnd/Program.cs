@@ -2,30 +2,34 @@ using FrontEnd.Helpers.Implementations;
 using FrontEnd.Helpers.Interfaces;
 using Microsoft.AspNetCore.Authentication.Cookies;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                                    .AddCookie(x => x.LoginPath = "/login/login");
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/login/login";
+    });
 
-builder.Services.AddSession();
+builder.Services.AddSession(options =>
+{
+    options.Cookie.HttpOnly = false;
+    options.Cookie.IsEssential = false;
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+});
 
+builder.Services.AddHttpContextAccessor();
 
-#region DI
-
+// Dependency Injection (DI)
 builder.Services.AddHttpClient<IServiceRepository, ServiceRepository>();
-builder.Services.AddScoped<IServiceRepository, ServiceRepository>();
 builder.Services.AddScoped<IUsuarioHelper, UsuarioHelper>();
 builder.Services.AddScoped<IProductoHelper, ProductoHelper>();
 builder.Services.AddScoped<ICategoriaHelper, CategoriaHelper>();
 builder.Services.AddScoped<IPedidoHelper, PedidoHelper>();
 builder.Services.AddScoped<ISecurityHelper, SecurityHelper>();
-
-
-#endregion
+builder.Services.AddScoped<ICarritoHelper, CarritoHelper>();
 
 var app = builder.Build();
 
@@ -38,8 +42,8 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseSession();
-
+app.UseSession(); // Antes de Authentication
+app.UseAuthentication(); // Antes de Authorization
 app.UseAuthorization();
 
 app.MapControllerRoute(
