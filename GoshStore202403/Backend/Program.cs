@@ -45,6 +45,7 @@ builder.Services.AddDbContext<DbGoshStoreContext>();
 builder.Services.AddScoped<IUnidadDeTrabajo, UnidadDeTrabajo>();
 builder.Services.AddScoped<IUsuarioDAL, UsuarioDALImpl>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<ICarritoService, CarritoService>();
 
 //
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
@@ -53,19 +54,14 @@ builder.Services.AddScoped<IDireccioneDAL, DireccioneDALImpl>();
 builder.Services.AddScoped<IDireccioneService, DireccioneService>();
 builder.Services.AddScoped<IProductoService, ProductService>();
 builder.Services.AddScoped<IProductoDAL, ProductoDALImpl>();
+builder.Services.AddScoped<ICarritoDAL, CarritoDALImpl>();
 //
 builder.Services.AddScoped<IPedidoDAL, PedidoDALImpl>();
 builder.Services.AddScoped<IPedidoService, PedidoService>();
 builder.Services.AddScoped<IDetallePedidoDAL, DetallePedidoDALImpl>();
 builder.Services.AddScoped<IDetallePedidoService, DetallePedidoService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
-
-
-
-
 #endregion
-
-
 
 #region Identity
 
@@ -132,8 +128,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseAuthentication();
 app.UseAuthorization();
-app.UseAuthorization();
+
 
 app.UseMiddleware<ApiKeyManager>(); 
 

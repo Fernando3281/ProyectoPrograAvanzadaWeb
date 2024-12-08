@@ -56,18 +56,19 @@ public partial class DbGoshStoreContext : DbContext
                 .ValueGeneratedOnAdd()
                 .HasColumnName("id_carrito");
             entity.Property(e => e.IdProducto).HasColumnName("id_producto");
-            entity.Property(e => e.IdUsuario).HasColumnName("id_usuario");
+            entity.Property(e => e.IdUsuario).HasColumnName("UsuarioId");
             entity.Property(e => e.Cantidad).HasColumnName("cantidad");
 
-            entity.HasOne(d => d.IdProductoNavigation).WithMany(p => p.CarritoProductos)
+            entity.HasOne(d => d.IdProductoNavigation)
+                .WithMany(p => p.CarritoProductos)
                 .HasForeignKey(d => d.IdProducto)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Carrito_P__id_pr__3F466844");
 
-            entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.CarritoProductos)
+            entity.HasOne(d => d.UsuarioNavigation).WithMany()
                 .HasForeignKey(d => d.IdUsuario)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Carrito_P__id_us__403A8C7D");
+                .HasConstraintName("FK_Carrito_Usuarios");
         });
 
         modelBuilder.Entity<Categoria>(entity =>

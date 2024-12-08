@@ -21,6 +21,8 @@ namespace DAL.Interfaces
 
         IDetallePedidoDAL DetallePedidoDAL { get; }
 
+        ICarritoDAL CarritoDAL { get; }
+
 
         bool Complete();
 
