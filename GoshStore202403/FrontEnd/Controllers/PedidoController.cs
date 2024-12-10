@@ -1,17 +1,24 @@
 ﻿using FrontEnd.Helpers.Interfaces;
 using FrontEnd.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using System.Linq;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using System.IO;
+
 
 namespace FrontEnd.Controllers
 {
     public class PedidoController : Controller
     {
-        IPedidoHelper _pedidoHelper;
+        private readonly IPedidoHelper _pedidoHelper;
+        private readonly IDetallePedidoHelper _detallePedidoHelper;
 
-        public PedidoController(IPedidoHelper pedidoHelper)
+        public PedidoController(IPedidoHelper pedidoHelper, IDetallePedidoHelper detallePedidoHelper)
         {
             _pedidoHelper = pedidoHelper;
+            _detallePedidoHelper = detallePedidoHelper;
         }
 
         // GET: PedidoController
@@ -25,6 +32,8 @@ namespace FrontEnd.Controllers
         public ActionResult Details(int id)
         {
             var pedido = _pedidoHelper.GetPedido(id);
+            var detalles = _detallePedidoHelper.GetDetallesPedido();
+            ViewBag.Detalles = detalles.Where(d => d.IdPedido == id).ToList();
             return View(pedido);
         }
 
@@ -101,5 +110,8 @@ namespace FrontEnd.Controllers
                 return View();
             }
         }
+
+       
+
     }
 }
