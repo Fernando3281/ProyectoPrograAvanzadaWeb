@@ -37,6 +37,8 @@ namespace FrontEnd.Controllers
                     var loging = securityHelper.Login(user);
 
                     TokenAPI tokenAPI = loging.Token;
+                    Console.WriteLine($"Token JWT almacenado en la sesión: {tokenAPI.Token}");
+
                     var EsValido = false;
 
                     if (tokenAPI != null)

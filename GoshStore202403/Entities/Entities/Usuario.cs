@@ -17,8 +17,6 @@ public partial class Usuario
 
     public string? Rol { get; set; }
 
-    public virtual ICollection<CarritoProducto> CarritoProductos { get; set; } = new List<CarritoProducto>();
-
     public virtual ICollection<Direccione> Direcciones { get; set; } = new List<Direccione>();
 
     public virtual ICollection<Pedido> Pedidos { get; set; } = new List<Pedido>();
