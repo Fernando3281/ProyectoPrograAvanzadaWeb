@@ -11,5 +11,7 @@ namespace FrontEnd.Helpers.Interfaces
         Task<bool> EliminarDelCarritoAsync(int idCarrito, int idProducto);
 
         Task<bool> VaciarCarritoAsync(string usuarioId);
+
+
     }
 }

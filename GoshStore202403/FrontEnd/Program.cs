@@ -30,6 +30,8 @@ builder.Services.AddScoped<ICategoriaHelper, CategoriaHelper>();
 builder.Services.AddScoped<IPedidoHelper, PedidoHelper>();
 builder.Services.AddScoped<ISecurityHelper, SecurityHelper>();
 builder.Services.AddScoped<ICarritoHelper, CarritoHelper>();
+builder.Services.AddScoped<IDetallePedidoHelper, DetallePedidoHelper>();
+
 
 var app = builder.Build();
 

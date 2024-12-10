@@ -11,87 +11,86 @@
     <meta name="viewport" content="width=device-width" />
     <title>Checkout</title>
 </head>
-<body>
+
     <div class="container mt-4">
         <h2 class="text-center">Checkout</h2>
 
         <!-- Resumen del carrito -->
         <h4 class="mt-4">Resumen de tu carrito</h4>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Precio Unitario</th>
-                    <th>Subtotal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Productos del carrito -->
-                <tr>
-                    <td>Camiseta Nike</td>
-                    <td>2</td>
-                    <td>₡5,000.00</td>
-                    <td>₡10,000.00</td>
-                </tr>
-                <tr>
-                    <td>Camiseta Batman</td>
-                    <td>1</td>
-                    <td>₡5,000.00</td>
-                    <td>₡5,000.00</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3" class="text-end"><strong>Total:</strong></td>
-                    <td><strong>₡15,000.00</strong></td>
-                </tr>
-            </tfoot>
-        </table>
-        <a href="/Carrito/Index" class="btn btn-secondary mb-4">¿Quieres editar tus compras?</a>
+        <form asp-action="ConfirmarPedido" asp-controller="Carrito" method="post">
+            @Html.AntiForgeryToken()
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio Unitario</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int index = 0;
+                    }
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.IdProducto
+                                <input type="hidden" name="@($"carrito[{index}].IdProducto")" value="@item.IdProducto" />
+                            </td>
+                            <td>
+                                @item.Cantidad
+                                <input type="hidden" name="@($"carrito[{index}].Cantidad")" value="@item.Cantidad" />
+                            </td>
+                            <td>₡5,000.00</td>
+                            <td>₡@(item.Cantidad * 5000)</td>
+                        </tr>
+                        index++;
+                    }
+                </tbody>
 
-        <!-- Métodos de pago -->
-        <h4 class="mt-4">Método de Pago</h4>
-        <form>
-            <!-- Pago en línea -->
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                        <td><strong>₡15,000.00</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <a href="/Carrito/Index" class="btn btn-secondary mb-4">¿Quieres editar tus compras?</a>
+
+            <!-- Métodos de pago -->
+            <h4 class="mt-4">Método de Pago</h4>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="paymentMethod" id="onlinePayment" value="online">
-                <label class="form-check-label" for="onlinePayment">
-                    Pago en línea (Tarjeta de crédito/débito)
-                </label>
+                <input class="form-check-input" type="radio" name="paymentMethod" id="onlinePayment" value="online" required>
+                <label class="form-check-label" for="onlinePayment">Pago en línea (Tarjeta de crédito/débito)</label>
             </div>
             <div id="onlinePaymentFields" class="mt-3 d-none">
                 <div class="mb-3">
                     <label for="cardNumber" class="form-label">Número de tarjeta</label>
-                    <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9101 1121">
+                    <input type="text" class="form-control" id="cardNumber" name="cardNumber" placeholder="1234 5678 9101 1121">
                 </div>
                 <div class="mb-3">
                     <label for="expiryDate" class="form-label">Fecha de vencimiento</label>
-                    <input type="month" class="form-control" id="expiryDate">
+                    <input type="month" class="form-control" id="expiryDate" name="expiryDate">
                 </div>
                 <div class="mb-3">
                     <label for="cvv" class="form-label">CVV</label>
-                    <input type="text" class="form-control" id="cvv" placeholder="123">
+                    <input type="text" class="form-control" id="cvv" name="cvv" placeholder="123">
                 </div>
             </div>
 
-            <!-- Transferencia bancaria -->
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransfer" value="transfer">
-                <label class="form-check-label" for="bankTransfer">
-                    Transferencia bancaria
-                </label>
+                <input class="form-check-input" type="radio" name="paymentMethod" id="bankTransfer" value="transfer" required>
+                <label class="form-check-label" for="bankTransfer">Transferencia bancaria</label>
             </div>
             <div id="bankTransferFields" class="mt-3 d-none">
                 <p class="text-info">Por favor envía el comprobante de la transferencia al 8888-8888.</p>
             </div>
 
-            <!-- SINPE móvil -->
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="paymentMethod" id="sinpeMobile" value="sinpe">
-                <label class="form-check-label" for="sinpeMobile">
-                    SINPE móvil
-                </label>
+                <input class="form-check-input" type="radio" name="paymentMethod" id="sinpeMobile" value="sinpe" required>
+                <label class="form-check-label" for="sinpeMobile">SINPE móvil</label>
             </div>
             <div id="sinpeMobileFields" class="mt-3 d-none">
                 <p class="text-info">Por favor envía el comprobante del SINPE al 8888-8888.</p>
@@ -100,30 +99,31 @@
             <button type="submit" class="btn btn-success mt-4">Confirmar Pedido</button>
         </form>
     </div>
-</body>
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const paymentMethods = document.querySelectorAll('input[name="paymentMethod"]');
-        const onlineFields = document.getElementById("onlinePaymentFields");
-        const transferFields = document.getElementById("bankTransferFields");
-        const sinpeFields = document.getElementById("sinpeMobileFields");
 
-        paymentMethods.forEach((method) => {
-            method.addEventListener("change", () => {
-                onlineFields.classList.add("d-none");
-                transferFields.classList.add("d-none");
-                sinpeFields.classList.add("d-none");
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const paymentMethods = document.querySelectorAll('input[name="paymentMethod"]');
+            const onlineFields = document.getElementById("onlinePaymentFields");
+            const transferFields = document.getElementById("bankTransferFields");
+            const sinpeFields = document.getElementById("sinpeMobileFields");
 
-                if (method.value === "online") {
-                    onlineFields.classList.remove("d-none");
-                } else if (method.value === "transfer") {
-                    transferFields.classList.remove("d-none");
-                } else if (method.value === "sinpe") {
-                    sinpeFields.classList.remove("d-none");
-                }
+            paymentMethods.forEach((method) => {
+                method.addEventListener("change", () => {
+                    onlineFields.classList.add("d-none");
+                    transferFields.classList.add("d-none");
+                    sinpeFields.classList.add("d-none");
+
+                    if (method.value === "online") {
+                        onlineFields.classList.remove("d-none");
+                    } else if (method.value === "transfer") {
+                        transferFields.classList.remove("d-none");
+                    } else if (method.value === "sinpe") {
+                        sinpeFields.classList.remove("d-none");
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
+
 
 </html>
