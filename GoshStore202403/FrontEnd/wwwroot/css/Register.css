@@ -18,7 +18,7 @@ body {
     .background .black-bg {
         position: absolute;
         inset: 0;
-        background-color: floralwhite;
+        background-color: black;
     }
 
     .background svg {
@@ -66,8 +66,8 @@ body {
     background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 10px;
-    box-shadow: 0 0 40px rgba(8, 7, 16, 0.1);
-    color: black;
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    color: white;
 }
 
     .form-wrapper h1 {
@@ -78,7 +78,7 @@ body {
 
     .form-wrapper p {
         text-align: center;
-        color: #727272;
+        color: #d1d1d1;
         margin-top: 10px;
     }
 
@@ -97,8 +97,8 @@ input {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
     font-size: 16px;
-    color: #333;
-    border: 1px solid #ddd;
+    color: white;
+    border: none;
 }
 
     input::placeholder {
@@ -109,8 +109,8 @@ button {
     margin-top: 30px;
     width: 100%;
     padding: 15px;
-    background-color: black;
-    color: #f1f1f1;
+    background-color: #ffffff;
+    color: #080710;
     font-weight: 600;
     border-radius: 5px;
     border: none;
@@ -118,7 +118,7 @@ button {
 }
 
     button:hover {
-        background-color: #57199a;
+        background-color: #f5f5f5;
     }
 
 .checkbox-wrapper {
@@ -141,11 +141,10 @@ button {
     display: block;
     text-align: center;
     margin-top: 20px;
-    color: #727272;
+    color: #d1d1d1;
     text-decoration: none;
 }
 
     .register-link:hover {
         text-decoration: underline;
     }
-

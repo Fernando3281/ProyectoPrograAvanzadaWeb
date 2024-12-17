@@ -26,28 +26,31 @@
 <main>
     <div class="container">
         <div class="row">
-            @foreach (var item in Model)
-            {
-                <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
-                    <div class="card">
-                        <img src="@Url.Content(item.Imagen)" alt="@item.NombreProducto" />
-                        <h2>@item.NombreProducto</h2>
-                        <p class="price">₡@item.Precio</p>
-                        <p>Stock: @item.Stock</p>
-                        <div class="btn-container">
-                            <a href="@Url.Action("Details", new { id = item.IdProducto })" class="btn-action" title="Detalles">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
+            <a asp-controller="Producto" asp-action="InfoProducto" asp-route-id="@item.IdProducto" class="card-link">
+                <div class="card">
+                    <img src="@Url.Content(item.Imagen)" alt="@item.NombreProducto" />
+                    <h2>@item.NombreProducto</h2>
+                    <p class="price">₡@item.Precio</p>
+                    <p>Stock: @item.Stock</p>
+                    <div class="btn-container">
+                        <a href="@Url.Action("Details", new { id = item.IdProducto })" class="btn-action" title="Detalles">
                                 <i class="bi bi-info-circle"></i>
-                            </a>
-                            <a href="@Url.Action("Edit", new { id = item.IdProducto })" class="btn-action edit-btn" title="Editar">
-                                <i class="bi bi-pencil-square"></i>
-                            </a>
-                            <a href="@Url.Action("Delete", new { id = item.IdProducto })" class="btn-action" title="Eliminar">
-                                <i class="bi bi-trash3"></i>
-                            </a>
-                        </div>
+                        </a>
+                        <a href="@Url.Action("Edit", new { id = item.IdProducto })" class="btn-action edit-btn" title="Editar">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <a href="@Url.Action("Delete", new { id = item.IdProducto })" class="btn-action" title="Eliminar">
+                            <i class="bi bi-trash3"></i>
+                        </a>
                     </div>
                 </div>
-            }
+            </a>
         </div>
+    }
+</div>
+
     </div>
 </main>

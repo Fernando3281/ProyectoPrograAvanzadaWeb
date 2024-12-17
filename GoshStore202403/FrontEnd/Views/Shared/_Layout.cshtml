@@ -60,7 +60,7 @@
                                 <i class="fas fa-user"></i> Mi Cuenta
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" asp-area="" asp-controller="Usuario" asp-action="Perfil" asp-route-id="@userId"><i class="fas fa-user-circle me-2"></i>Perfil</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Carrito" asp-action="Perfil" asp-route-id="@userId"><i class="fas fa-user-circle me-2"></i>Perfil</a></li>
                                 <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Administrar</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
@@ -87,12 +87,9 @@
         </div>
     </footer>
 
-    <!-- Devuelve a la vista del Login pero no elimina el token del todo por lo que se puede volver al homepage ingresando la direccion desde la url -->
     <script>
         function logout() {
-            localStorage.removeItem('jwtToken');
-
-            localStorage.removeItem('userInfo');
+            sessionStorage.removeItem('jwtToken');
             window.location.href = '@Url.Action("Login", "Login")';
         }
     </script>
