@@ -41,12 +41,12 @@
             {
                 <div class="col-md-3">
                     <!-- Enlace a la página de detalle del producto -->
-                    <a asp-controller="Producto" asp-action="InfoProducto" asp-route-id="@item.IdProducto" class="btn-action" title="Detalles">
+                    <a asp-controller="Producto" asp-action="InfoProducto" asp-route-id="@item.IdProducto" class="btn-action" title="Detalles" style="text-decoration: none;">
                         <div class="product-card">
                             <img src="@item.Imagen" alt="@item.NombreProducto" class="img-fluid rounded mb-3">
                             <h3>@item.NombreProducto</h3>
                             <p class="price">
-                                @(item.Precio?.ToString("C") ?? "$0.00")
+                                @(item.Precio?.ToString("₡#,##0.00") ?? "₡0.00")
                             </p>
                             <button class="btn btn-outline-primary mt-3">Ver Detalles</button>
                         </div>

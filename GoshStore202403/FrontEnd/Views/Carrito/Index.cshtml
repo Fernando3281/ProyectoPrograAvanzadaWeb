@@ -45,9 +45,9 @@
                 {
                     <tr>
                         <td>@item.NombreProducto</td>
-                        <td>@item.Precio.ToString("C")</td>
+                        <td>@item.Precio.ToString("C", new System.Globalization.CultureInfo("es-CR")).Replace("₡", "₡")</td>
                         <td>@item.Cantidad</td>
-                        <td>@item.Subtotal.ToString("C")</td>
+                        <td>@item.Subtotal.ToString("C", new System.Globalization.CultureInfo("es-CR"))</td>
                         <td>
                             <form asp-action="Eliminar" method="post">
                                 <input type="hidden" name="idCarrito" value="@item.IdCarrito" />
@@ -61,7 +61,8 @@
         </table>
 
         <div class="text-end mt-3">
-            <h4>Total: @Model.Sum(x => x.Precio * x.Cantidad).ToString("C")</h4>
+
+            <h4>Total: @Model.Sum(x => x.Precio * x.Cantidad).ToString("C", new System.Globalization.CultureInfo("es-CR"))</h4>
             <a class="btn btn-success" asp-area="" asp-controller="Carrito" asp-action="Checkout">Confirmar Compra</a>
         </div>
     }

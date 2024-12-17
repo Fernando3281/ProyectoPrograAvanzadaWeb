@@ -299,3 +299,68 @@ main {
 .container {
     margin-top: 30px;
 }
+
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .card {
+        width: 18rem;
+        height: 28rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .card {
+        width: 16rem;
+        height: 26rem;
+    }
+
+    .search-container input {
+        width: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .search-container input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .search-container button {
+            width: 100%;
+        }
+
+    .card {
+        width: 100%;
+        max-width: 22rem;
+        height: 30rem;
+    }
+
+        .card h2 {
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+        }
+}
+
+@media (max-width: 576px) {
+    .create-link .btn-create {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .card {
+        height: 28rem;
+    }
+
+        .card h2 {
+            font-size: 1.2rem;
+        }
+}
